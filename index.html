@@ -309,8 +309,11 @@ $("#prevChapter").addEventListener("click",()=>shiftChapter(-1));$("#prevChapter
 $("#nextChapter").addEventListener("click",()=>shiftChapter(1));$("#nextChapterBottom").addEventListener("click",()=>shiftChapter(1));
 $("#chapterSelect").addEventListener("change",e=>{if(currentManga?.isRemote)renderLivePages(Number(e.target.value));else{currentChapter=+e.target.value;renderPages();}});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeReader();});
-const savedUrl=localStorage.getItem("manga_sb_url"),savedKey=localStorage.getItem("manga_sb_key");if(savedUrl&&savedKey){$("#sbUrl").value=savedUrl;$("#sbKey").value=savedKey;if(window.supabase?.createClient){sb=window.supabase.createClient(savedUrl,savedKey);loadPublishedMangas();}}
+const DEFAULT_SB_URL="https://nxzerzblausfjqglvvmn.supabase.co";
+const DEFAULT_SB_KEY="sb_publishable_EXRrof0_cqb9_V41Ce8pCQ_Flrq_eHw";
+const savedUrl=localStorage.getItem("manga_sb_url")||DEFAULT_SB_URL,savedKey=localStorage.getItem("manga_sb_key")||DEFAULT_SB_KEY;
+$("#sbUrl").value=savedUrl;$("#sbKey").value=savedKey;
+if(window.supabase?.createClient){sb=window.supabase.createClient(savedUrl,savedKey);loadPublishedMangas();}
 renderFilters();renderGrid();
-</script>
 </body>
 </html>
