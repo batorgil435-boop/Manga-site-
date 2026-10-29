@@ -315,5 +315,6 @@ const savedUrl=localStorage.getItem("manga_sb_url")||DEFAULT_SB_URL,savedKey=loc
 $("#sbUrl").value=savedUrl;$("#sbKey").value=savedKey;
 if(window.supabase?.createClient){sb=window.supabase.createClient(savedUrl,savedKey);loadPublishedMangas();}
 renderFilters();renderGrid();
+</script>
 </body>
 </html>
