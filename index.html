@@ -263,7 +263,7 @@ function renderGrid(){
  $("#mangaGrid").innerHTML=list.length?list.map(m=>`<article class="card" tabindex="0" role="button" aria-label="${escapeHtml(m.title)} унших" data-id="${m.id}">
  <div class="cover" style="${coverStyle(m)}">${m.tag?`<span class="tag">${escapeHtml(m.tag)}</span>`:""}${m.coverUrl?"":`<span class="emoji">${m.emoji}</span>`}<span class="label">${escapeHtml(m.title)}</span></div>
  <h3>${escapeHtml(m.title)}</h3><div class="meta">${escapeHtml(m.genre)} · ${m.chapter} бүлэг</div><span class="status">● ${liveManga===null?"Жишээ бүтээл":"Нийтэлсэн"}</span></article>`).join(""):`<div class="empty">${liveManga===null?"Таны хайлтад тохирох манга олдсонгүй.":"Одоогоор нийтэлсэн манга алга."}</div>`;
- $("#mangaGrid").querySelectorAll(".card").forEach(c=>{c.addEventListener("click",()=>openReader(+c.dataset.id));c.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openReader(+c.dataset.id);}});});
+ $("#mangaGrid").querySelectorAll(".card").forEach(c=>{c.addEventListener("click",()=>openReader(c.dataset.id));c.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openReader(c.dataset.id);}});});
 }
 function makePageSvg(m,n){
  const bg=m.colors[n%2], accent=m.colors[(n+1)%2];
